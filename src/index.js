@@ -12,19 +12,17 @@ function extraiLinks (texto) {
     const formataCaptura = capturas.map((resultado) => ({
         [resultado[1]]: resultado[2]
     }))
-    return formataCaptura
+    return formataCaptura.length !== 0 ? formataCaptura : 'não há link no arquivo';
 }
 
 async function pegaArquivo(caminhoDoArquivo) {
     try {
         const encoding = 'utf-8';
         const texto = await fs.promises.readFile(caminhoDoArquivo, encoding)
-        console.log(extraiLinks(texto));
+        return extraiLinks(texto);
     } catch (erro) {
-        trataErro(erro)
-    } finally {
-        console.log(chalk.yellow('operação concluída'));
-      }
+        trataErro(erro);
+    }
 }
 
 export default pegaArquivo;
