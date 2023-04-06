@@ -6,7 +6,7 @@ function trataErro(erro) {
     // criando um novo objeto do tipo erro
 }
 
-function extraiLinks (texto) {
+function extraiLinksMd (texto) {
     const regex = /\[([^[\]]*?)\]\((https?:\/\/[^\s?#.].[^\s]*)\)/gm;
     const capturas = [...texto.matchAll(regex)];
     const formataCaptura = capturas.map((resultado) => ({
@@ -19,7 +19,7 @@ async function pegaArquivo(caminhoDoArquivo) {
     try {
         const encoding = 'utf-8';
         const texto = await fs.promises.readFile(caminhoDoArquivo, encoding)
-        return extraiLinks(texto);
+        return extraiLinksMd(texto);
     } catch (erro) {
         trataErro(erro);
     }
