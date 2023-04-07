@@ -1,5 +1,3 @@
-import chalk from "chalk"
-
 // a lista de links é uma lista de objetos, essa fun pecorre a lista e extrai os valores de cada objeto para uma nova array
 function separaLinks(arrLinks) { //recebe o resultado de links e nomes
     return arrLinks.map((objetoLink) => Object.values(objetoLink).join()) // extraimos apenas os links e guardamos na fun
