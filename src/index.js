@@ -1,8 +1,9 @@
-import fs from 'fs';
+import fs from 'fs'; // lib usada para trabalhar com arquivos do computador ex: ler arquivos
 import chalk from 'chalk';
 
 function trataErro(erro) {
     throw new Error(chalk.red(erro.code, 'não há arquivos no diretório'));
+    // criando um novo objeto do tipo erro
 }
 
 function extraiLinksMd (texto) {
