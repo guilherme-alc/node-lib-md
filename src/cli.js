@@ -1,5 +1,5 @@
 import chalk from 'chalk';
-import fs from 'fs'
+import fs from 'fs';
 import pegaArquivo from './index.js';
 import listaValidada from './http-validacao.js';
 
