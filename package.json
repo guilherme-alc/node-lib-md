@@ -1,13 +1,12 @@
 {
   "name": "node-lib-md",
   "version": "1.0.0",
-  "description": "Uma biblioteca para ler e extrair informações de um arquivo em markdown",
+  "description": "extrair links de um arquivo.md - npm rum cli './caminho' (-- --valida) <- sem parênteses para validar os links",
   "main": "index.js",
   "type": "module",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "cli": "node ./src/cli.js ./arquivos/texto.md",
-    "cli:valida": "node ./src/cli.js ./arquivos/texto.md --valida"
+    "cli": "node ./src/cli.js"
   },
   "author": "Guilherme Augusto",
   "license": "ISC",
