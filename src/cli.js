@@ -4,7 +4,6 @@ import pegaArquivo from './index.js';
 import listaValidada from './http-validacao.js';
 
 const caminhoCli = process.argv;
-//passando caminho do arquivo via terminal como parâmetro pra função pegaArquivo
 
 async function imprimeLista(valida, resultado, identificador = '') {
     if(valida) {
@@ -18,12 +17,11 @@ async function imprimeLista(valida, resultado, identificador = '') {
             chalk.black.bgGreen(identificador),
             resultado);
     }
-    // teste que verifica se na chamada da fun imprimeLista foi passado o comando referente a validação de links
 }
 
 async function processaTexto(argumentos) {
     const caminho = argumentos[2];
-    const valida = argumentos[3] === '--valida'; // se argumentos no indice 3 for = a "--valida", retorna true, se não, false
+    const valida = argumentos[3] === '--valida'; 
     try {
         fs.lstatSync(caminho);
     } catch (erro) {
@@ -32,13 +30,12 @@ async function processaTexto(argumentos) {
             return;
         }
     }
-    // verificação se o caminho é referente a um arquivo ou diretório
-    if (fs.lstatSync(caminho).isFile()) { //retorna true se o caminho for um arquivo
+    if (fs.lstatSync(caminho).isFile()) {
         const resultado = await pegaArquivo(caminho);
         imprimeLista(valida, resultado);
     } else if (fs.lstatSync(caminho).isDirectory()) {
-        const arquivos = await fs.promises.readdir(caminho); //método para ler diretório
-        arquivos.forEach(async (arquivo) => { //loop para interar cada arquivo do diretório e extrair os links
+        const arquivos = await fs.promises.readdir(caminho);
+        arquivos.forEach(async (arquivo) => {
             const lista = await pegaArquivo(`${caminho}/${arquivo}`);
             imprimeLista(valida, lista, arquivo);
         })
